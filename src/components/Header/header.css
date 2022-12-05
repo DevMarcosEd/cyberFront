@@ -1,0 +1,37 @@
+.container {
+    width: 100%;
+    background-size: cover;
+    height: 90vh;
+    display: flex;
+    background-image: url(../../assets/images/header.jpg);
+    align-items: center;
+}
+
+.social-media {
+    display: flex;
+    flex-direction: column;
+    font-size: 35px;
+    gap: 10px;
+    position: absolute;
+    width: 100%;
+    align-items: flex-end;
+
+}
+
+.github-link,
+.linkedin-link,
+.instagram-link {
+    color: #fcee0a;
+    transition: all 0.4s;
+    margin-right: 50px;
+}
+
+.github-link:hover,
+.linkedin-link:hover,
+.instagram-link:hover {
+    transform: scale(1.2);
+}
+
+.content-btn {}
+
+.btn {}
