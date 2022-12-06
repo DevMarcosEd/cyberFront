@@ -2,36 +2,46 @@ import React, { useState } from "react";
 import './glossary.css'
 
 export default function Glossary() {
-
+    
     const [list] = useState([
-        'Animais', 'Arasaka', 'Cai', 'Canal',
-        'Cibernética', 'ciberpsicose', 'corpe', 'cyberpunk',
-        'Frila', 'Garras de tygre', 'Max-tac', 'Maelstrom', 'Medicânico (cânico)', 'Militech',
-        'Nd (neurodança)', 'Night city', 'Polícia de night city',
-        'Rapineiros', 'Sandevistan', 'Trauma team', 'Trilha-rede', 'Ttécnico'
+        { id: 0, titulo: 'Animais', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/Animals.jpg')},
+        { id: 1, titulo: 'Militech', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/Militech.jpg')},
+        { id: 2, titulo: 'Arasaka', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/Arasaka.jpg') },
+        { id: 3, titulo: 'Polícia de night city', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/NCPD.jpg')},
+        { id: 4, titulo: 'BD (dança cerebral)', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/Braindance.jpg') },
+        { id: 5, titulo: 'Netrunner', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/Netrunner.jpg')},
+        { id: 6, titulo: 'Corpo', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/Corpo.jpg')},
+        { id: 7, titulo: 'Night city', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/Night-City.jpg')},
+        { id: 8, titulo: 'Ciberpsicose', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/Cyberpsychosis.jpg') },
+        { id: 9, titulo: 'Ripperdoc', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/Ripperdoc.jpg')},
+        { id: 10, titulo: 'Cyberpunk', texto: 'Um texto sobre max', img: require('../../assets/images/imagesGlossary/Cyberpunk.jpg')},
+        { id: 11, titulo: 'Sandevistan ', texto: 'Um texto sobre max', img: require('../../assets/images/imagesGlossary/Sandevistan.jpg')},
+        { id: 12, titulo: 'Cyberware (implantes ou cromo)', texto: 'Um texto sobre max', img: require('../../assets/images/imagesGlossary/Cyberware.jpg')},
+        { id: 13, titulo: 'Catadores', texto: 'Um texto sobre max', img: require('../../assets/images/imagesGlossary/Scavengers.jpg')},
+        { id: 14, titulo: 'Fixador', texto: 'Um texto sobre max', img: require('../../assets/images/imagesGlossary/Fixer.jpg') },
+        { id: 15, titulo: 'Só', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/Solo.jpg')},
+        { id: 16, titulo: 'Ice', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/ICE.jpg')},
+        { id: 17, titulo: 'Técnico', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/Techie.jpg')},
+        { id: 18, titulo: 'Redemoinho', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/Maelstrom.jpg')},
+        { id: 19, titulo: 'Equipe de Trauma', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/Trauma-Team.jpg')},
+        { id: 20, titulo: 'Maxtac', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/MaxTac.jpg')},
+        { id: 21, titulo: 'Garras de Tigre', texto: 'Um texto', img: require('../../assets/images/imagesGlossary/Tyger-Claws.jpg') },
     ])
 
-    // const [newClass,setNewClass ] = useState('')
-    // const [active, setActive] = useState(false)
+    const [imagem, setImagem] = useState(require('../../assets/images/imagesGlossary/Animals.jpg'))
+    const [titulo, setTitulo] = useState('Animais')
+    const [texto, setTexto] = useState('Um texto sobre animais')
 
-    // const addClass = (event) => {
-    //     if (event.target.classList.contains("active")) {
-    //       event.target.classList.remove("active");
-          
-    //     } else {
-    //       event.target.classList.add("active");
-    //     }
-    //   };
-
-    // const addClass = (event) => {
-    //     if(active === false) {
-    //         event.target.classList.add("active");
-    //         setActive(true)
-    //     } else {
-    //         event.target.classList.remove("active");
-    //         setActive(false)
-    //     }
-    // }
+    function mudarConteudo(i) {
+        list.forEach(id => {
+            if(i === id.id) {
+                console.log(i)
+                setTitulo(id.titulo)
+                setTexto(id.texto)
+                setImagem(id.img)
+            }
+        })
+    }
             
         return (
             <section className="glossary">
@@ -42,28 +52,20 @@ export default function Glossary() {
                 </div>
                 <div className="content-glossary">
                     <div className="list">
-                        
                             {
                                 list.map((item, index) => (
-                                    <div className="list-item">
-                                    <p key={index}>{item}</p>
+                                    <div key={index} className="list-item">
+                                    <p onClick={() => mudarConteudo(index)}>{item.titulo}</p>
                                     </div>
                                 ))
                             }
-
-                        
                     </div>
                     <div className="about-img">
                         <div className="img-for-about">
-                        <img src={require('../../assets/images/animais.jpg')} alt="imagem"></img>
+                        <img src={imagem} alt="imagem"></img>
                         </div>
-                        <h4 className="title-about-img">Animais</h4>
-                        <p className="text-about-img">Gangue bem conhecida a oeste de Pacifica, os Animais inventaram e,
-                            posteriormente, aperfeiçoaram um método de luta de rua que lhes
-                            permite enfrentar adversários cromados enquanto usam implantes
-                            artesanais feitos sob medida que evitam os eletrônicos.
-                            Por sua ferocidade e afeição pela batalha, são seguranças e
-                            guardas valiosos.</p>
+                        <h4 className="title-about-img">{titulo}</h4>
+                        <p className="text-about-img">{texto}</p>
                     </div>
                 </div>
                 <div className="content-simple-line">
